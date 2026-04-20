@@ -33,7 +33,7 @@ function Carousel({ images }: { images: string[] }) {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((src, i) => (
-          <img key={i} src={src} alt={`Caso ${i + 1}`} className="w-full h-full object-cover flex-shrink-0" />
+          <img key={i} src={src} alt={`Caso ${i + 1}`} loading="lazy" className="w-full h-full object-cover flex-shrink-0" />
         ))}
       </div>
       <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -180,6 +180,7 @@ export default function App() {
               src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=2000" 
               alt="Cirugía ortopédica" 
               className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
+              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/70"></div>
           </div>
@@ -193,10 +194,10 @@ export default function App() {
               
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
                 Dr. Sabah <br className="hidden sm:block" />
-                <span className="text-secondary text-3xl sm:text-4xl lg:text-5xl block mt-2">Especialista en Tobillo y Pie</span>
+                <span className="text-secondary text-3xl sm:text-4xl lg:text-5xl xl:text-6xl block mt-2">Especialista en Tobillo y Pie</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-accent mb-10 max-w-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl lg:text-2xl text-accent mb-10 max-w-2xl leading-relaxed">
                 Más de 10 años de experiencia devolviendo la movilidad y calidad de vida a mis pacientes mediante técnicas quirúrgicas avanzadas.
               </p>
 
@@ -220,14 +221,14 @@ export default function App() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:-translate-y-1"
+                  className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-[0_8px_20px_rgb(37,211,102,0.3)] hover:-translate-y-1"
                 >
                   <MessageCircle className="w-6 h-6" />
                   <span>Agendar Consulta</span>
                 </a>
                 <a 
                   href="#especialidades"
-                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-medium text-lg transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg transition-all hover:-translate-y-1"
                 >
                   <span>Ver Tratamientos</span>
                 </a>
@@ -237,9 +238,9 @@ export default function App() {
         </section>
 
         {/* ESPECIALIDADES */}
-        <section id="especialidades" className="py-24 bg-light">
+        <section id="especialidades" className="py-24 lg:py-32 bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-6">
                 Especialidades y Tratamientos
               </h2>
@@ -248,8 +249,8 @@ export default function App() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-md transition-shadow">
+            <div className="grid md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="w-14 h-14 bg-accent/30 rounded-xl flex items-center justify-center mb-6">
                   <Activity className="w-8 h-8 text-primary" />
                 </div>
@@ -259,7 +260,7 @@ export default function App() {
                 </p>
               </div>
               
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="w-14 h-14 bg-accent/30 rounded-xl flex items-center justify-center mb-6">
                   <ShieldCheck className="w-8 h-8 text-primary" />
                 </div>
@@ -269,7 +270,7 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-2xl p-8 shadow-sm border border-muted/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="w-14 h-14 bg-accent/30 rounded-xl flex items-center justify-center mb-6">
                   <Stethoscope className="w-8 h-8 text-primary" />
                 </div>
@@ -285,8 +286,9 @@ export default function App() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:-translate-y-1"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:shadow-[0_8px_20px_rgb(37,211,102,0.3)] hover:-translate-y-1"
               >
+                <MessageCircle className="w-6 h-6" />
                 Agendar Consulta
               </a>
             </div>
@@ -294,16 +296,17 @@ export default function App() {
         </section>
 
         {/* SECCIÓN AUTORIDAD */}
-        <section id="dr-sabah" className="py-24 bg-white">
+        <section id="dr-sabah" className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
               <div className="w-full lg:w-5/12">
-                <div className="relative aspect-square max-w-md mx-auto">
-                  <div className="absolute inset-0 bg-secondary rounded-full translate-x-4 translate-y-4 opacity-20"></div>
+                <div className="relative aspect-square max-w-md mx-auto xl:max-w-lg group">
+                  <div className="absolute inset-0 bg-secondary rounded-full translate-x-4 translate-y-4 opacity-20 transition-transform group-hover:translate-x-6 group-hover:translate-y-6"></div>
                   <img 
                     src="https://lh3.googleusercontent.com/d/1moGQQrLGAaEEZ-i1d8ujtqUYv2HTNUO4" 
                     alt="Dr. Francisco Sabah" 
-                    className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-xl"
+                    loading="lazy"
+                    className="relative z-10 w-full h-full object-cover rounded-full border-4 border-white shadow-xl transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
               </div>
@@ -349,9 +352,9 @@ export default function App() {
         </section>
 
         {/* CASOS CLÍNICOS */}
-        <section id="casos-clinicos" className="py-24 bg-light">
+        <section id="casos-clinicos" className="py-24 lg:py-32 bg-light">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-6">
                 Casos Clínicos
               </h2>
@@ -374,7 +377,7 @@ export default function App() {
         </section>
 
         {/* SECCIÓN PROCESO */}
-        <section id="proceso" className="py-24 bg-white">
+        <section id="proceso" className="py-24 lg:py-32 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-6">
@@ -416,7 +419,7 @@ export default function App() {
         </section>
 
         {/* SECCIÓN FAQ */}
-        <section id="faq" className="py-24 bg-light">
+        <section id="faq" className="py-24 lg:py-32 bg-light">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-6">
@@ -451,7 +454,7 @@ export default function App() {
         </section>
 
         {/* SECCIÓN UBICACIÓN */}
-        <section className="py-24 bg-white">
+        <section className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold text-dark mb-6">
@@ -530,7 +533,7 @@ export default function App() {
         </section>
 
         {/* SECCIÓN FORMULARIO */}
-        <section id="contacto" className="py-24 bg-primary text-white">
+        <section id="contacto" className="py-24 lg:py-32 bg-primary text-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="font-heading text-3xl md:text-5xl font-extrabold mb-4">
@@ -648,10 +651,11 @@ export default function App() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_8px_40px_rgb(37,211,102,0.6)] hover:scale-110 transition-all duration-300 group flex items-center justify-center animate-bounce-slow"
         aria-label="Contactar por WhatsApp"
       >
-        <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20"></div>
+        {/* Anillo de pulso animado */}
+        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
         <MessageCircle className="w-8 h-8 relative z-10" />
       </a>
     </div>
